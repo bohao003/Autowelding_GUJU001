@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    max-height: 500px; /* 控制圖片的最大高度 */
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 增加文字陰影以提升對比度 */
+    background-color: rgba(0, 0, 0, 0.4); /* 半透明背景，讓文字更清晰 */
+    padding: 10px 20px;
+    border-radius: 10px; /* 讓背景有圓角 */
+}
+
+.text-overlay h1 {
+    margin: 0;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.text-overlay h2 {
+    margin: 5px 0 0;
+    font-size: 32px;
+}
