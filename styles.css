@@ -6,9 +6,12 @@ body {
 
 .image-container {
     position: relative;
+    display: flex;
     width: 100%;
-    max-height: 500px; /* 控制圖片的最大高度 */
+    height: 800px;
+    max-height: 100%; /* 控制圖片的最大高度 */
     overflow: hidden;
+    object-fit: contain;/* 保持圖片比例並適應容器 */
 }
 
 .image-container img {
@@ -19,7 +22,7 @@ body {
 
 .text-overlay {
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 10%;
     transform: translate(-50%, -50%);
     color: white;
