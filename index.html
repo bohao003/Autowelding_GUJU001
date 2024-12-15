@@ -75,6 +75,110 @@
             </div>
         </div>
     </header>
+
+    <div style="position: relative; width: 300px; height: 200px; background: #ccc; margin: 20px auto;">
+        <div class="text-overlay">
+            <h1>歡迎</h1>
+            <p>请瀏覽我们的頁面</p>
+        </div>
+    </div>
+    
+    <div class="services">
+        <h2>我们的服务</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <h3>焊接服务</h3>
+                <p>提供高精度的焊接解决方案，適用於各類项目。</p>
+            </div>
+            <div class="service-card">
+                <h3>自動化技术</h3>
+                <p>引入先進的機械手臂技术，提高生產效率。</p>
+            </div>
+            <div class="service-card">
+                <h3>訂製设计</h3>
+                <p>根據客户需求量身訂製解决方案，满足特殊要求。</p>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        /* 文本覆盖样式 */
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .text-overlay h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .text-overlay p{
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #fff;
+        }
+    
+        /* 服务内容样式 */
+        .services {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+    
+        .services h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+    
+        .service-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .service-card {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+    
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    
+        .service-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+    </style>
+    
+    
+    
 </body>
 </html>
 
