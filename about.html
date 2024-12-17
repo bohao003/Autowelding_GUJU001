@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我们</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Vue.js -->
+    <div id="app">
+        <!-- navbar -->
+        <nav>
+            <ul>
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="services.html">服務內容</a></li>
+                <li><a href="about.html" class="active">關於我們</a></li>
+                <li><a href="contact.html">聯絡我们</a></li>
+            </ul>
+        </nav>
+
+        <!-- 關於我们内容 -->
+        <header>
+            <h1>關於我们</h1>
+        </header>
+
+        <!-- 动态内容 -->
+        <section>
+            <h2>我们的願景</h2>
+            <p>{{ vision }}</p>
+        </section>
+        <section>
+            <h2>我们的團體</h2>
+            <ul>
+                <li v-for="member in team" :key="member.id">
+                    {{ member.name }} - {{ member.role }}
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>我们的優勢</h2>
+            <ul>
+                <li v-for="advantage in advantages" :key="advantage">{{ advantage }}</li>
+            </ul>
+        </section>
+
+        <!-- 页脚 -->
+        <footer>
+            <p>版权所有 &copy; 2024 焊接公司</p>
+        </footer>
+    </div>
+
+    <!-- Vue.js 脚本 -->
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    vision: "我们是一家专业从事焊接技术的公司，致力于为客户提供高效、可靠的解决方案。",
+                    team: [
+                        { id: 1, name: "张三", role: "技术总监" },
+                        { id: 2, name: "李四", role: "产品经理" },
+                        { id: 3, name: "王五", role: "高级工程师" },
+                    ],
+                    advantages: [
+                        "先进的技术",
+                        "卓越的服务",
+                        "个性化解决方案",
+                    ]
+                };
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>
