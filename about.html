@@ -104,7 +104,10 @@
         .team-members {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
+            align-items: center;
+            overflow-x: auto;
+            padding: 10px;
             gap: 20px;
         }
 
@@ -124,10 +127,10 @@
         }
 
         .team-member img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
-            border-radius: 50%; /* 圆形头像 */
+            border-radius: 10PX; /* 圆形头像 */
             margin-bottom: 10px;
         }
 
@@ -165,9 +168,9 @@
     </style>
 </head>
 <body>
-    <!-- Vue.js 应用 -->
+    
     <div id="app">
-        <!-- 导航栏 -->
+        <!-- NAVBAR -->
         <nav>
             <div class="navbar">
                 <p>光峻企業社</p>
@@ -180,7 +183,7 @@
             </div>
         </nav>
 
-        <!-- 关于我们内容 -->
+        <!--內容 -->
         <header>
             <img src="img/2.jpg" alt="header">
             <div class="text-overlay">
@@ -189,14 +192,14 @@
             </div>
         </header>
 
-        <!-- 动态内容 -->
+        <!-- 動態内容 -->
         <section>
-            <h2>我们的愿景</h2>
+            <h2>我们的理想</h2>
             <p>{{ vision }}</p>
         </section>
 
         <section>
-            <h2>我们的团队</h2>
+            <h2>我们的技術</h2>
             <div class="team-members">
                 <div class="team-member" v-for="member in team" :key="member.id">
                     <img :src="member.photo" :alt="member.name">
@@ -207,35 +210,35 @@
         </section>
 
         <section>
-            <h2>我们的优势</h2>
+            <h2>我们的優勢</h2>
             <ul class="advantages-list">
                 <li v-for="advantage in advantages" :key="advantage">{{ advantage }}</li>
             </ul>
         </section>
 
-        <!-- 页脚 -->
+        <!-- 頁腳 -->
         <footer>
-            <p>版权所有 &copy; 2024 焊接公司</p>
+            <p>版權所有 &copy; 2024 焊接公司</p>
         </footer>
     </div>
 
-    <!-- Vue.js 脚本 -->
+    <!-- Vue.js -->
     <script>
         const { createApp } = Vue;
 
         createApp({
             data() {
                 return {
-                    vision: "我们是一家专业从事焊接技术的公司，致力于为客户提供高效、可靠的解决方案。",
+                    vision: "我们是一間專業焊接的公司，專門為客戶提供高效、可靠的解决方案。",
                     team: [
-                        { id: 1, name: "张三", role: "技术总监", photo: "img/team1.jpg" },
-                        { id: 2, name: "李四", role: "产品经理", photo: "img/team2.jpg" },
-                        { id: 3, name: "王五", role: "高级工程师", photo: "img/team3.jpg" },
+                        { id: 1, name: "機械手臂焊接", role: "機械手臂焊接", photo: "img/IMG_1730.JPG" },
+                        { id: 2, name: "光纖雷射切管", role: "光纖雷射切管", photo: "img/IMG_4714.JPG" },
+                        { id: 3, name: "傳統鐵管加工", role: "傳統鐵管加工", photo: "img/IMG_4490.jpg" },
                     ],
                     advantages: [
-                        "先进的技术",
-                        "卓越的服务",
-                        "个性化解决方案",
+                        "先進的技術",
+                        "卓越的服務",
+                        "客製化解決方案",
                     ]
                 };
             }
