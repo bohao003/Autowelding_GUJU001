@@ -10,78 +10,70 @@
     <style>
         /* 背景顏色漸變 */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
             background: linear-gradient(135deg, #1E3A8A, #A9A9A9); /* 深蓝到金属灰漸變 */
             color: white;
+            font-family: Arial, sans-serif;
         }
-
-        /* navbar */
-        nav {
-            background-color: #007BFF;
-            padding: 10px;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         .navbar p {
             margin: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
         }
-
-        nav ul {
-            display: flex;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        nav ul li a:hover {
-            color: #FFD700; /* 滑鼠接觸轉黃色 */
-        }
-
-        
-        header {
+        .image-container {
             position: relative;
             width: 100%;
             height: 60vh;
             overflow: hidden;
         }
-
-        header img {
+        .image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.7;
+            opacity: 0.8; /* 圖片稍微暗化 */
         }
-
         .text-overlay {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+              /* 創造良好品質提供卓越服務 */
         }
-
         .text-overlay h2 {
             font-size: 2.5rem;
             margin: 0.5rem 0;
+        }
+        .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #FFD700; /* 滑鼠接觸轉黃色 */
+        }
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .text-overlay h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .text-overlay p{
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #fff;
         }
 
         /* 内容 */
@@ -162,23 +154,24 @@
     <div id="app">
         <!-- NAVBAR -->
         <nav>
-            <div class="navbar">
-                <p>光峻企業社</p>
-                <ul>
-                    <li><a href="index.html">首頁</a></li>
-                    <li><a href="about.html" class="active">關於我們</a></li>
-                    <li><a href="services.html">生產技術</a></li>
-                    <li><a href="contact.html">聯絡我們</a></li>
+            <div class="navbar navbar-expand-md d-flex justify-content-between">
+                <p class="fs-1">光峻企業社</p>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
+                    <li class="nav-item"><a class="nav-link" href="technology.html">生產技術</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">聯絡我們</a></li>
                 </ul>
             </div>
         </nav>
-
         <!--內容 -->
-        <header>
-            <img src="img/2.jpg" alt="header">
-            <div class="text-overlay">
-                <h2>創造良好品質</h2>
-                <h2>提供卓越服務</h2>
+        <header id="header">
+            <div class="image-container">
+                <img src="img/2.jpg" alt="header">
+                <div class="text-overlay">
+                    <h2>創造良好品質</h2>
+                    <h2>提供卓越服務</h2>
+                </div>
             </div>
         </header>
 
