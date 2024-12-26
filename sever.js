@@ -30,7 +30,7 @@ server.get("/services", (req, res)=>{
 });
 
 server.get("/profolio", (req,res)=>{
-      //DB
+      DB
       ProfolioDB.find({}).then(results=>{
         if(results != null){
              res.send(results);
