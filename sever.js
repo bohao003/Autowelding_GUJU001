@@ -42,7 +42,7 @@ server.get("/profolio", (req,res)=>{
 
 server.post("/contact", (req,res)=>{
      ContactDB.insert(req.body);
-     res.redirect("/#contact");
+     res.redirect("/contact");
 })
 
 server.listen(8080, ()=>{
