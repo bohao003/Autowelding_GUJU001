@@ -13,25 +13,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
 
     <style>
-        
         body {
             margin: 0;
             background: linear-gradient(135deg, #1E3A8A, #1E3A8A); /* 深藍色漸變 */
             color: white;
             font-family: Arial, sans-serif;
         }
+
         .navbar p {
             margin: 0;
         }
 
-        
         .navbar {
             background-color: rgba(0, 0, 0, 0.7); /* 深色透明背景 */
         }
+
         .navbar-nav .nav-link {
             color: white;
             transition: color 0.3s ease;
         }
+
         .navbar-nav .nav-link:hover {
             color: #FFD700; /* 滑鼠接觸轉黃色 */
         }
@@ -42,6 +43,7 @@
             width: 100%;
             height: 60vh;
             overflow: hidden;
+            margin-bottom: 40px; /* 增加底部間距 */
         }
         .image-container img {
             width: 100%;
@@ -70,25 +72,42 @@
             color: #fff;
         }
 
-        .text-overlay p{
+        .text-overlay p {
             font-size: 1.2rem;
             margin-top: 10px;
             color: #fff;
         }
 
-        /* 新的圖片區域 */
+        /* 第二個圖片區域 */
         .second-image-container {
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             height: 60vh;
-            overflow: hidden;
+            margin-bottom: 60px; /* 增加底部間距 */
+            overflow: hidden; /* 確保圖片進來時不會超出範圍 */
+            position: relative;
         }
 
         .second-image-container img {
-            width: 100%;
-            height: 100%;
+            width: 50%; /* 圖片寬度縮小一半 */
+            height: auto;
             object-fit: cover;
-            opacity: 0.8;
+            opacity: 0;
+            transform: translateX(100%); /* 預設圖片在視口外，往右側 */
+            transition: all 1s ease-out; /* 動畫效果 */
+            border: 5px solid #fff; /* 增加邊框 */
+            border-radius: 15px; /* 圓角效果 */
+        }
+
+        .second-text {
+            position: absolute;
+            left: 55%; /* 將文字放置在圖片右側 */
+            top: 10%;
+            font-size: 1.5rem;
+            color: white;
+            max-width: 40%; /* 限制文字區域寬度 */
         }
 
         /* 增加滾動效果 */
@@ -131,10 +150,9 @@
         <section id="second-header">
             <div class="second-image-container">
                 <img src="img/IMG_1060.jpg" alt="second-header" class="parallax-image">
-                <div class="text-overlay animate-on-scroll" id="text-overlay-2">
-                    <h1>高效能設備</h1>
-                    <p>不斷創新，精益求精</p>
-                </div>
+            </div>
+            <div class="second-text animate-on-scroll" id="text-scroll">
+                <p>這是旁邊的文字說明，當滾動時會從左側進入並向下滾動消失。</p>
             </div>
         </section>
 
@@ -143,19 +161,6 @@
     <script>
         // 註冊 GSAP 插件
         gsap.registerPlugin(ScrollTrigger);
-
-        // 滾動視差效果 - 第一張圖片
-        gsap.to(".parallax-image", {
-            yPercent: -50, // 背景圖像向上移動
-            ease: "none", // 無加速
-            scrollTrigger: {
-                trigger: ".image-container", // 觸發器：當這個區塊進入視口
-                start: "top bottom", // 視口開始顯示該區域時觸發
-                end: "bottom top", // 當該區域完全離開視口時停止
-                scrub: true, // 滾動同步
-                markers: false // 註釋掉標記
-            }
-        });
 
         // 文字動畫效果 - 第一張圖片
         gsap.to("#text-overlay", {
@@ -170,23 +175,43 @@
             }
         });
 
-        // 滾動視差效果 - 第二張圖片
+        // 第二張圖片進場補間效果（滑動從右進來，並且有平滑過渡效果）
         gsap.to(".second-image-container img", {
-            yPercent: -50, // 背景圖像向上移動
-            ease: "none", // 無加速
+            xPercent: 0, // 圖片從右邊進來
+            opacity: 1, // 顯示圖片
+            duration: 1.5, // 更長的動畫時間，讓進場效果更平滑
+            ease: "power3.out", // 使用平滑的緩動函數
             scrollTrigger: {
                 trigger: ".second-image-container", // 觸發器：當這個區塊進入視口
-                start: "top bottom", // 視口開始顯示該區域時觸發
-                end: "bottom top", // 當該區域完全離開視口時停止
+                start: "top bottom", // 當第二張圖片接近視口底部時
+                end: "bottom top", // 當第二張圖片完全離開視口時停止
                 scrub: true, // 滾動同步
                 markers: false // 註釋掉標記
             }
         });
 
-        // 文字動畫效果 - 第二張圖片
-        gsap.to("#text-overlay-2", {
-            opacity: 1, // 顯示文字
-            duration: 1,
+        // 文字滾動進入與消失動畫 - 第二張圖片的文字
+        gsap.fromTo("#text-scroll", {
+            opacity: 0,
+            x: -200, // 預設文字從左側以較快速度進入
+        }, {
+            opacity: 1,
+            x: 0,
+            duration: 1.5, // 動畫更平滑
+            scrollTrigger: {
+                trigger: ".second-image-container", // 當第二張圖片進入視口時觸發
+                start: "top center", // 當視口接近這個區塊時觸發
+                end: "bottom top", // 滾動結束時
+                scrub: true, // 滾動同步
+                markers: false // 註釋掉標記
+            }
+        });
+
+        // 文字消失向下滾動
+        gsap.to("#text-scroll", {
+            opacity: 0,
+            y: 100, // 文字向下滾動
+            duration: 1.5,
             scrollTrigger: {
                 trigger: ".second-image-container", // 觸發器：當這個區塊進入視口
                 start: "top bottom",
@@ -199,5 +224,6 @@
 
 </body>
 </html>
+
 
 
