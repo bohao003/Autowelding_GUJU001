@@ -39,7 +39,6 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-              /* 創造良好品質提供卓越服務 */
         }
         .text-overlay h2 {
             font-size: 2.5rem;
@@ -52,35 +51,40 @@
         .nav-link:hover {
             color: #FFD700; /* 滑鼠接觸轉黃色 */
         }
-        .text-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 40px;
-            border-radius: 8px;
-            width: 80%;
-            max-width: 600px;
+
+        /* Contact form styles */
+        #contact {
+            padding-top: 150px; /* 增加上方間距，讓表單下移 */
         }
 
-        .text-overlay h1 {
-            font-size: 3rem;
-            margin: 0;
-            font-weight: bold;
-            color: #fff;
+        .form-control {
+            font-size: 1.2rem; /* 增加文字大小，讓輸入框更容易操作 */
+            padding: 15px; /* 增加內邊距 */
+            margin-bottom: 20px; /* 增加項目間距 */
         }
 
-        .text-overlay p{
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: #fff;
+        textarea.form-control {
+            height: 200px; /* 增加文字區域的高度 */
         }
-    
 
+        button[type="submit"] {
+            font-size: 1.5rem; /* 增加按鈕文字大小 */
+            padding: 15px 40px; /* 增加按鈕的內邊距 */
+            margin-top: 20px; /* 按鈕上方增加空隙 */
+        }
 
+        .btn-xl {
+            background-color: #1E3A8A;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-xl:hover {
+            background-color: #FFD700;
+            color: #1E3A8A;
+        }
     </style>
 </head>
 <body>
@@ -107,11 +111,13 @@
             </div>
         </div>
     </header>
+
+    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
+                    <h2 class="section-heading">聯絡我們</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
@@ -119,7 +125,7 @@
                 <div class="col-lg-12">
                     <form name="sentMessage" id="contactForm" action="/contact" method="post" novalidate>
                         <div class="row">
-                            <div class="col-md-6">                                                 
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="請留下你的名字*" id="name" name="name" required data-validation-required-message="請留下你的名字">
                                     <p class="help-block text-danger"></p>
@@ -139,22 +145,21 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="file" name="myFile1" id="myFile1" accept="image/*">
-                                    
-                                </div>
-                            </div>
-                            
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
                                 <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Send Message</button>
-                            </div>
+                                <!-- 傳送按鈕 -->
+                                <button type="submit" class="btn btn-xl btn-primary">
+                                    <i class="fas fa-paper-plane"></i> 傳送
+                                </button>
+                            </div> 
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
+        </div>   
     </section>
-</body>   
+</body>
+</html>
+
+
