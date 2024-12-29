@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生產技術</title>
-    
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="css/bootstrap.bundle.min.js"></script>
 
@@ -15,41 +15,43 @@
     <style>
         body {
             margin: 0;
-            background: linear-gradient(135deg, #1E3A8A, #1E3A8A); /* 深藍色漸變 */
+            background: linear-gradient(135deg, #1E3A8A, #A9A9A9); /* 深蓝到金属灰漸變 */
             color: white;
             font-family: Arial, sans-serif;
         }
-
         .navbar p {
             margin: 0;
         }
-
-        .navbar {
-            background-color: rgba(0, 0, 0, 0.7); /* 深色透明背景 */
-        }
-
-        .navbar-nav .nav-link {
-            color: white;
-            transition: color 0.3s ease;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #FFD700; /* 滑鼠接觸轉黃色 */
-        }
-
-        /* 第一個圖片 */
         .image-container {
             position: relative;
             width: 100%;
             height: 60vh;
             overflow: hidden;
-            margin-bottom: 40px; /* 增加底部間距 */
         }
         .image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 0.8; /* 圖片稍微暗化 */
+        }
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+              /* 創造良好品質提供卓越服務 */
+        }
+        .text-overlay h2 {
+            font-size: 2.5rem;
+            margin: 0.5rem 0;
+        }
+        .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #FFD700; /* 滑鼠接觸轉黃色 */
         }
         .text-overlay {
             position: absolute;
@@ -72,76 +74,66 @@
             color: #fff;
         }
 
-        .text-overlay p {
+        .text-overlay p{
             font-size: 1.2rem;
             margin-top: 10px;
             color: #fff;
         }
-
-        /* 第二個圖片區域 */
+        /* 第二部分的样式 */
         .second-image-container {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             width: 100%;
             height: 60vh;
-            margin-bottom: 60px; /* 增加底部間距 */
-            overflow: hidden; /* 確保圖片進來時不會超出範圍 */
+            margin-bottom: 60px;
+            overflow: hidden;
             position: relative;
         }
 
         .second-image-container img {
-            width: 50%; /* 圖片寬度縮小一半 */
+            width: 30%; /* 图片缩小至50% */
             height: auto;
             object-fit: cover;
             opacity: 0;
-            transform: translateX(100%); /* 預設圖片在視口外，往右側 */
-            transition: all 1s ease-out; /* 動畫效果 */
-            border: 5px solid #fff; /* 增加邊框 */
-            border-radius: 15px; /* 圓角效果 */
+            transform: translateX(-100%);
+            transition: all 1s ease-out;
+            border: 8px solid #fff;
+            border-radius: 15px;
+            margin-right: 80px;
         }
 
+        /* 第二部分文字样式 */
         .second-text {
-            position: absolute;
-            left: 55%; /* 將文字放置在圖片右側 */
-            top: 10%;
             font-size: 1.5rem;
             color: white;
-            max-width: 40%; /* 限制文字區域寬度 */
-        }
-
-        /* 增加滾動效果 */
-        .animate-on-scroll {
-            opacity: 0;
-            transition: opacity 0.6s ease-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
+            margin-left: 20px;
+            max-width: 40%;
         }
     </style>
-
 </head>
 <body>
     <div id="app">
         <!-- navbar -->
-        <nav class="navbar navbar-expand-md d-flex justify-content-between">
-            <p class="fs-1">光峻企業社</p>
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
-                <li class="nav-item"><a class="nav-link" href="technology.html">生產技術</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
-            </ul>
-        </nav>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-md d-flex justify-content-between">
+                <p class="fs-1">光峻企業社</p>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
+                    <li class="nav-item"><a class="nav-link" href="technology.html">生產技術</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
+                </ul>
+            </div>
+        </div>
 
         <!-- 第一個視覺區域 -->
         <header id="header">
             <div class="image-container">
                 <img src="img/2.jpg" alt="header" class="parallax-image">
-                <div class="text-overlay animate-on-scroll" id="text-overlay">
+                <div class="text-overlay">
                     <h1>創造良好品質</h1>
-                    <p>提供卓越服務</p>
+                    <h1>提供卓越服務</h1>
                 </div>
             </div>
         </header>
@@ -150,80 +142,44 @@
         <section id="second-header">
             <div class="second-image-container">
                 <img src="img/IMG_1060.jpg" alt="second-header" class="parallax-image">
-            </div>
-            <div class="second-text animate-on-scroll" id="text-scroll">
-                <p>這是旁邊的文字說明，當滾動時會從左側進入並向下滾動消失。</p>
+                <div class="second-text">
+                    <p>這是旁邊的文字說明，當滾動時會從右側進入並向下滾動消失。</p>
+                </div>
             </div>
         </section>
-
     </div>
 
     <script>
         // 註冊 GSAP 插件
         gsap.registerPlugin(ScrollTrigger);
 
-        // 文字動畫效果 - 第一張圖片
-        gsap.to("#text-overlay", {
-            opacity: 1, // 顯示文字
-            duration: 1,
-            scrollTrigger: {
-                trigger: ".image-container", // 觸發器：當這個區塊進入視口
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-                markers: false // 註釋掉標記
+        // 第二張圖片進場效果（從左側滑入，觸發範圍增大）
+        gsap.fromTo(
+            ".second-image-container img",
+            {
+                x: "-100%", // 初始位置在視口外左側
+                opacity: 0 // 隱藏
+            },
+            {
+                x: "10%", // 滑入後停留偏左一點
+                opacity: 1, // 顯示
+                duration: 2, // 時間延長為 2 秒，讓動畫更平滑
+                ease: "power3.out", // 使用平滑的緩動效果
+                scrollTrigger: {
+                    trigger: ".second-image-container", // 設置觸發器
+                    start: "top 80%", // 當第二張圖片距離視口頂部 80% 高度時觸發
+                    end: "bottom 50%", // 當圖片的底部距離視口 50% 高度時結束動畫
+                    scrub: true, // 動畫與滾動同步
+                    markers: false // 標記已關閉
+                }
             }
-        });
-
-        // 第二張圖片進場補間效果（滑動從右進來，並且有平滑過渡效果）
-        gsap.to(".second-image-container img", {
-            xPercent: 0, // 圖片從右邊進來
-            opacity: 1, // 顯示圖片
-            duration: 1.5, // 更長的動畫時間，讓進場效果更平滑
-            ease: "power3.out", // 使用平滑的緩動函數
-            scrollTrigger: {
-                trigger: ".second-image-container", // 觸發器：當這個區塊進入視口
-                start: "top bottom", // 當第二張圖片接近視口底部時
-                end: "bottom top", // 當第二張圖片完全離開視口時停止
-                scrub: true, // 滾動同步
-                markers: false // 註釋掉標記
-            }
-        });
-
-        // 文字滾動進入與消失動畫 - 第二張圖片的文字
-        gsap.fromTo("#text-scroll", {
-            opacity: 0,
-            x: -200, // 預設文字從左側以較快速度進入
-        }, {
-            opacity: 1,
-            x: 0,
-            duration: 1.5, // 動畫更平滑
-            scrollTrigger: {
-                trigger: ".second-image-container", // 當第二張圖片進入視口時觸發
-                start: "top center", // 當視口接近這個區塊時觸發
-                end: "bottom top", // 滾動結束時
-                scrub: true, // 滾動同步
-                markers: false // 註釋掉標記
-            }
-        });
-
-        // 文字消失向下滾動
-        gsap.to("#text-scroll", {
-            opacity: 0,
-            y: 100, // 文字向下滾動
-            duration: 1.5,
-            scrollTrigger: {
-                trigger: ".second-image-container", // 觸發器：當這個區塊進入視口
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-                markers: false // 註釋掉標記
-            }
-        });
+        );
     </script>
 
 </body>
 </html>
+
+
 
 
 
