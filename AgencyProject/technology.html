@@ -40,11 +40,22 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-              /* 創造良好品質提供卓越服務 */
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
         }
-        .text-overlay h2 {
-            font-size: 2.5rem;
-            margin: 0.5rem 0;
+        .text-overlay h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: bold;
+            color: #fff;
+        }
+        .text-overlay p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #fff;
         }
         .nav-link {
             color: white;
@@ -53,34 +64,7 @@
         .nav-link:hover {
             color: #FFD700; /* 滑鼠接觸轉黃色 */
         }
-        .text-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 40px;
-            border-radius: 8px;
-            width: 80%;
-            max-width: 600px;
-        }
-
-        .text-overlay h1 {
-            font-size: 3rem;
-            margin: 0;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .text-overlay p{
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: #fff;
-        }
-        /* 第二部分的样式 */
-        .second-image-container {
+        .second-image-container, .third-image-container {
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -90,55 +74,32 @@
             overflow: hidden;
             position: relative;
         }
-
-        .second-image-container img {
-            width: 30%; /* 图片缩小至50% */
+        .second-image-container img, .third-image-container img {
+            width: 30%;
             height: auto;
             object-fit: cover;
             opacity: 0;
             transform: translateX(-100%);
             transition: all 1s ease-out;
             border: 8px solid #fff;
-            border-radius: 15px;
+            border-radius: 15px; /* 确保两张图片的圆角一致 */
             margin-right: 80px;
         }
-
-        /* 第二部分文字样式 */
-        .second-text {
+        .second-text, .third-text {
             font-size: 1.5rem;
             color: white;
             margin-left: 300px;
             max-width: 40%;
         }
-        .third-image-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100%;
-            height: 60vh;
-            margin-bottom: 60px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .third-image-container img {
-            width: 30%; /* 图片缩小至50% */
-            height: auto;
-            object-fit: cover;
-            opacity: 0;
-            transform: translateX(-100%);
-            transition: all 1s ease-out;
-            border: 8px solid #fff;
-            border-radius: 15px;
-            margin-right: 80px;
-        }
-
-        /* 第二部分文字样式 */
-        .third-text {
-            font-size: 1.5rem;
-            color: white;
-            margin-left: 300px;
-            max-width: 40%;
+        @media (max-width: 768px) {
+            .second-text, .third-text {
+                margin-left: 20px;
+                max-width: 90%;
+            }
+            .second-image-container img, .third-image-container img {
+                width: 80%;
+                margin-right: 0;
+            }
         }
     </style>
 </head>
@@ -160,7 +121,7 @@
         <!-- 第一個視覺區域 -->
         <header id="header">
             <div class="image-container">
-                <img src="img/2.jpg" alt="header" class="parallax-image">
+                <img src="img/2.jpg" alt="header" class="parallax-image" loading="lazy">
                 <div class="text-overlay">
                     <h1>創造良好品質</h1>
                     <h1>提供卓越服務</h1>
@@ -171,17 +132,17 @@
         <!-- 第二個視覺區域 -->
         <section id="second-header">
             <div class="second-image-container">
-                <img src="img/IMG_1060.jpg" alt="second-header" class="parallax-image">
+                <img src="img/IMG_1060.jpg" alt="second-header" class="parallax-image" loading="lazy">
                 <div class="second-text">
                     <p>這是旁邊的文字說明，當滾動時會從右側進入並向下滾動消失。</p>
                 </div>
             </div>
             <div class="third-image-container">
-                <img src="img/IMG_4459.jpg" alt="second-header" class="parallax-image">
-                <div class="second-text">
+                <img src="img/IMG_1061.jpg" alt="third-header" class="parallax-image" loading="lazy">
+                <div class="third-text">
                     <p>這是旁邊的文字說明，當滾動時會從右側進入並向下滾動消失。</p>
                 </div>
-
+            </div>
         </section>
     </div>
 
@@ -189,52 +150,35 @@
         // 註冊 GSAP 插件
         gsap.registerPlugin(ScrollTrigger);
 
-        // 第二張圖片進場效果（從左側滑入，觸發範圍增大）
-        gsap.fromTo(
-            ".second-image-container img",
-            {
-                x: "-100%", // 初始位置在視口外左側
-                opacity: 0 // 隱藏
-            },
-            {
-                x: "30%", // 滑入後停留偏左一點
-                opacity: 1, // 顯示
-                duration: 2, // 時間延長為 2 秒，讓動畫更平滑
-                ease: "power3.out", // 使用平滑的緩動效果
-                scrollTrigger: {
-                    trigger: ".second-image-container", // 設置觸發器
-                    start: "top 80%", // 當第二張圖片距離視口頂部 80% 高度時觸發
-                    end: "bottom 50%", // 當圖片的底部距離視口 50% 高度時結束動畫
-                    scrub: true, // 動畫與滾動同步
-                    markers: false // 標記已關閉
+        // 创建通用动画函数
+        function createScrollAnimation(selector, xValue, triggerSelector) {
+            gsap.fromTo(
+                selector,
+                { x: xValue, opacity: 0 },
+                {
+                    x: "30%",
+                    opacity: 1,
+                    duration: 2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: triggerSelector,
+                        start: "top 80%",
+                        end: "bottom 50%",
+                        scrub: true,
+                        once: true,
+                        markers: false
+                    }
                 }
-            }
-        );
-        gsap.fromTo(
-            ".third-image-container img",
-            {
-                x: "-100%", // 初始位置在視口外左側
-                opacity: 0 // 隱藏
-            },
-            {
-                x: "40%", // 滑入後停留偏左一點
-                opacity: 1, // 顯示
-                duration: 2, // 時間延長為 2 秒，讓動畫更平滑
-                ease: "power3.out", // 使用平滑的緩動效果
-                scrollTrigger: {
-                    trigger: ".third-image-container", // 設置觸發器
-                    start: "top 80%", // 當第二張圖片距離視口頂部 80% 高度時觸發
-                    end: "bottom 50%", // 當圖片的底部距離視口 50% 高度時結束動畫
-                    scrub: true, // 動畫與滾動同步
-                    markers: false // 標記已關閉
-                }
-            }
-        );
+            );
+        }
 
+        // 为图片添加滚动动画
+        createScrollAnimation(".second-image-container img", "-100%", ".second-image-container");
+        createScrollAnimation(".third-image-container img", "-100%", ".third-image-container");
     </script>
-
 </body>
 </html>
+
 
 
 
