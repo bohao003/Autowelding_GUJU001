@@ -1,140 +1,153 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <!-- 設定網頁編碼為UTF-8，支持繁體中文顯示 -->
     <meta charset="UTF-8">
+    <!-- 設定視窗大小，使網站自適應各種設備 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 設定頁面標題為“生產技術” -->
     <title>生產技術</title>
 
+    <!-- 引入Bootstrap框架的CSS樣式表，用於頁面排版和樣式 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入Bootstrap框架的JS，包含響應式功能和其他交互效果 -->
     <script src="css/bootstrap.bundle.min.js"></script>
 
-    <!-- 引入GSAP和ScrollTrigger插件 -->
+    <!-- 引入GSAP動畫庫和ScrollTrigger插件，用來實現滾動動畫效果 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
 
     <style>
+        /* 設定body的基本樣式 */
         body {
             margin: 0;
-            background: linear-gradient(135deg, #1E3A8A, #A9A9A9); /* 深蓝到金属灰渐变 */
-            color: white;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1E3A8A, #A9A9A9); /* 背景色為深藍到金屬灰的漸變 */
+            color: white; /* 文字顏色為白色 */
+            font-family: Arial, sans-serif; /* 設定字體 */
         }
+        /* 設定navbar樣式 */
         .navbar p {
             margin: 0;
         }
+        /* 設定第一個視覺區域的圖片容器樣式 */
         .image-container {
             position: relative;
             width: 100%;
-            height: 37.5rem; /* 60vh 转为 rem */
-            overflow: hidden;
+            height: 37.5rem; /* 設定高度 */
+            overflow: hidden; /* 隱藏溢出部分 */
         }
+        /* 設定圖片的樣式 */
         .image-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            opacity: 0.8; /* 图片稍微暗化 */
+            object-fit: cover; /* 圖片裁切以覆蓋整個區域 */
+            opacity: 0.8; /* 設定圖片的透明度 */
         }
+        /* 設定圖片上方的文字區塊樣式 */
         .text-overlay {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* 讓文字區塊居中 */
             text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 2.5rem; /* 40px 转为 rem */
-            border-radius: 0.5rem; /* 8px 转为 rem */
+            background: rgba(0, 0, 0, 0.5); /* 背景為半透明黑色 */
+            padding: 2.5rem; /* 內邊距 */
+            border-radius: 0.5rem; /* 圓角邊框 */
             width: 80%;
-            max-width: 37.5rem; /* 600px 转为 rem */
+            max-width: 37.5rem; /* 最大寬度 */
         }
+        /* 設定文字區塊內標題文字的樣式 */
         .text-overlay h1 {
-            font-size: 3rem; /* 48px 转为 rem */
+            font-size: 3rem; /* 設定字體大小 */
             margin: 0;
-            font-weight: bold;
-            color: #fff;
+            font-weight: bold; /* 加粗字體 */
+            color: #fff; /* 設定文字顏色為白色 */
         }
+        /* 設定文字區塊內描述文字的樣式 */
         .text-overlay p {
-            font-size: 1.2rem; /* 19px 转为 rem */
-            margin-top: 0.625rem; /* 10px 转为 rem */
-            color: #fff;
+            font-size: 1.2rem; /* 設定字體大小 */
+            margin-top: 0.625rem; /* 設定文字上方間距 */
+            color: #fff; /* 設定文字顏色為白色 */
         }
+        /* 設定連結的樣式 */
         .nav-link {
             color: white;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease; /* 設定顏色變換過渡效果 */
         }
         .nav-link:hover {
-            color: #FFD700; /* 滑鼠接触转黄色 */
+            color: #FFD700; /* 滑鼠懸停時文字顏色變為金黃色 */
         }
-        /* 第二个、第三个和第四个区域的共通样式 */
+        /* 第二個、第三個和第四個區域的共通樣式 */
         .second-image-container, .third-image-container, .fourth-image-container {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* 设置图片和文字之间的间距 */
+            justify-content: space-between; /* 設定圖片和文字之間的間距 */
             width: 100%;
-            height: 37.5rem; /* 60vh 转为 rem */
-            margin-bottom: 3.75rem; /* 60px 转为 rem */
+            height: 37.5rem; /* 設定區域高度 */
+            margin-bottom: 3.75rem; /* 設定區域底部間距 */
             overflow: hidden;
             position: relative;
         }
 
-        /* 图片样式 */
+        /* 圖片樣式 */
         .second-image-container img, .third-image-container img, .fourth-image-container img {
             width: 30%;
             height: auto;
             object-fit: cover;
             opacity: 0;
-            transform: translateX(-100%);
-            transition: all 1s ease-out;
-            border: 0.5rem solid #fff; /* 8px 转为 rem */
-            border-radius: 0.9375rem; /* 15px 转为 rem */
-            margin-right: 1.875rem; /* 30px 转为 rem */
+            transform: translateX(-100%); /* 預設圖片向左偏移 */
+            transition: all 1s ease-out; /* 設定過渡效果 */
+            border: 0.5rem solid #fff; /* 設定白色邊框 */
+            border-radius: 0.9375rem; /* 設定圓角邊框 */
+            margin-right: 1.875rem; /* 設定圖片間距 */
         }
 
-        /* 文字说明样式 */
+        /* 文字說明樣式 */
         .second-text, .third-text, .fourth-text {
-            font-size: 1.5rem; /* 24px 转为 rem */
+            font-size: 1.5rem; /* 設定字體大小 */
             color: white;
-            max-width: 60%;
+            max-width: 60%; /* 最大寬度 */
         }
 
-        /* 插入视频区域 */
+        /* 插入影片區域樣式 */
         .video-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 2.5rem 0; /* 40px 转为 rem */
+            margin: 2.5rem 0; /* 設定影片區間距 */
         }
 
         .video-wrapper {
             flex: 1;
-            padding: 1.25rem; /* 20px 转为 rem */
+            padding: 1.25rem; /* 設定內邊距 */
         }
 
         .video-description {
             flex: 1;
             color: white;
-            padding: 1.25rem; /* 20px 转为 rem */
-            font-size: 1.5rem; /* 24px 转为 rem */
-            text-align: left;
+            padding: 1.25rem; /* 設定內邊距 */
+            font-size: 1.5rem; /* 設定字體大小 */
+            text-align: left; /* 文字左對齊 */
         }
 
-        /* 在小屏幕下调整布局 */
-        @media (max-width: 48em) { /* 768px 转为 rem */
+        /* 響應式調整 */
+        @media (max-width: 48em) { /* 設定最大寬度為768px */
             .second-image-container, .third-image-container, .fourth-image-container {
-                flex-direction: column; /* 在小屏幕下将它们从横向排列变为纵向排列 */
-                align-items: center; /* 居中对齐 */
+                flex-direction: column; /* 改為縱向排列 */
+                align-items: center; /* 居中對齊 */
                 justify-content: center;
-                height: auto; /* 高度根据内容自适应 */
+                height: auto; /* 高度根據內容自適應 */
             }
 
             .second-image-container img, .third-image-container img, .fourth-image-container img {
-                width: 80%; /* 小屏幕上图片宽度变大 */
+                width: 80%; /* 小屏幕上圖片寬度變大 */
                 margin-right: 0;
-                margin-bottom: 1.25rem; /* 20px 转为 rem */
+                margin-bottom: 1.25rem; /* 設定圖片底部間距 */
             }
 
             .second-text, .third-text, .fourth-text {
-                margin-left: 0; /* 去掉左边的 margin */
-                max-width: 90%; /* 在小屏幕上文字宽度扩展 */
+                margin-left: 0; /* 去掉左邊間距 */
+                max-width: 90%; /* 文字寬度變大 */
                 text-align: center; /* 文字居中 */
             }
 
@@ -143,17 +156,18 @@
             }
 
             .video-description {
-                text-align: center;
-                padding: 0.625rem; /* 10px 转为 rem */
+                text-align: center; /* 影片說明文字居中 */
+                padding: 0.625rem; /* 設定內邊距 */
             }
         }
 
+        /* 設定頁腳樣式 */
         footer {
-            background-color: #f8f9fa; /* 保持背景色为浅灰色 */
+            background-color: #f8f9fa; /* 頁腳背景為淺灰色 */
             text-align: center;
-            padding: 0.9375rem; /* 15px 转为 rem */
-            font-size: 1.2rem; /* 19px 转为 rem */
-            color: black; /* 更改字体颜色为黑色 */
+            padding: 0.9375rem; /* 設定內邊距 */
+            font-size: 1.2rem; /* 設定字體大小 */
+            color: black; /* 設定文字顏色為黑色 */
         }
 
     </style>
@@ -206,6 +220,7 @@
                 </div>
             </div>
 
+            <!-- 第三個區域 -->
             <div class="third-image-container">
                 <img src="img/IMG_1061.jpg" alt="third-header" class="parallax-image" loading="lazy">
                 <div class="third-text">
@@ -213,7 +228,7 @@
                 </div>
             </div>
 
-            <!-- 第四個視覺區域 -->
+            <!-- 第四個區域 -->
             <div class="fourth-image-container">
                 <img src="img/IMG_1067.jpg" alt="fourth-header" class="parallax-image" loading="lazy">
                 <div class="fourth-text">
@@ -229,36 +244,35 @@
     </footer>
 
     <script>
-        // 註冊 GSAP 插件
+        // 註冊GSAP動畫插件
         gsap.registerPlugin(ScrollTrigger);
 
-        // 创建通用动画函数
+        // 創建滾動動畫的通用函數
         function createScrollAnimation(selector, xValue, triggerSelector) {
             gsap.fromTo(
                 selector,
                 { x: xValue, opacity: 0 },
                 {
-                    x: "30%",
-                    opacity: 1,
-                    duration: 2,
-                    ease: "power3.out",
+                    x: "30%", /* 讓元素從左側平滑移動 */
+                    opacity: 1, /* 漸變為完全不透明 */
+                    duration: 2, /* 動畫持續2秒 */
+                    ease: "power3.out", /* 動畫效果 */
                     scrollTrigger: {
-                        trigger: triggerSelector,
-                        start: "top 80%",
-                        end: "bottom 50%",
-                        scrub: true,
-                        once: true,
-                        markers: false
+                        trigger: triggerSelector, /* 觸發動畫的元素 */
+                        start: "top 80%", /* 動畫開始時的位置 */
+                        end: "bottom 50%", /* 動畫結束時的位置 */
+                        scrub: true, /* 滾動觸發動畫 */
+                        once: true, /* 只執行一次 */
+                        markers: false /* 不顯示觸發標記 */
                     }
                 }
             );
         }
 
-        // 为图片添加滚动动画
+        // 為各區域的圖片添加滾動動畫
         createScrollAnimation(".second-image-container img", "-100%", ".second-image-container");
         createScrollAnimation(".third-image-container img", "-100%", ".third-image-container");
         createScrollAnimation(".fourth-image-container img", "-100%", ".fourth-image-container");
     </script>
 </body>
 </html>
-
