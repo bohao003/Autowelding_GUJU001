@@ -108,6 +108,16 @@
             height: 400px;
             width: 100%;
         }
+
+        /* 增加間距 */
+        .map-section {
+            margin-top: 30px; /* 調整地圖與上方區塊的間距 */
+            margin-bottom: 40px; /* 調整地圖與footer之間的間距 */
+        }
+
+        .location-text {
+            margin-bottom: 40px; /* 調整文字與按鈕之間的間距 */
+        }
     </style>
 </head>
 <body>
@@ -182,10 +192,10 @@
         </div>   
 
         <!-- Leaflet 地圖 -->
-        <div class="container">
+        <div class="container map-section">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="text-center">我們的位置</h3>
+                    <h3 class="text-center location-text">我們的位置</h3>
                     <div id="map"></div>
                 </div>
             </div>
@@ -212,6 +222,3 @@
     </script>
 </body>
 </html>
-
-
-
