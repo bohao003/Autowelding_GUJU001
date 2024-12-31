@@ -25,7 +25,7 @@
         .image-container {
             position: relative;
             width: 100%;
-            height: 60vh;
+            height: 37.5rem; /* 60vh 转为 rem */
             overflow: hidden;
         }
         .image-container img {
@@ -41,20 +41,20 @@
             transform: translate(-50%, -50%);
             text-align: center;
             background: rgba(0, 0, 0, 0.5);
-            padding: 40px;
-            border-radius: 8px;
+            padding: 2.5rem; /* 40px 转为 rem */
+            border-radius: 0.5rem; /* 8px 转为 rem */
             width: 80%;
-            max-width: 600px;
+            max-width: 37.5rem; /* 600px 转为 rem */
         }
         .text-overlay h1 {
-            font-size: 3rem;
+            font-size: 3rem; /* 48px 转为 rem */
             margin: 0;
             font-weight: bold;
             color: #fff;
         }
         .text-overlay p {
-            font-size: 1.2rem;
-            margin-top: 10px;
+            font-size: 1.2rem; /* 19px 转为 rem */
+            margin-top: 0.625rem; /* 10px 转为 rem */
             color: #fff;
         }
         .nav-link {
@@ -64,34 +64,34 @@
         .nav-link:hover {
             color: #FFD700; /* 滑鼠接触转黄色 */
         }
-        /* 第二个和第三个区域的共通样式 */
-        .second-image-container, .third-image-container {
+        /* 第二个、第三个和第四个区域的共通样式 */
+        .second-image-container, .third-image-container, .fourth-image-container {
             display: flex;
             align-items: center;
             justify-content: space-between; /* 设置图片和文字之间的间距 */
             width: 100%;
-            height: 60vh;
-            margin-bottom: 60px;
+            height: 37.5rem; /* 60vh 转为 rem */
+            margin-bottom: 3.75rem; /* 60px 转为 rem */
             overflow: hidden;
             position: relative;
         }
 
         /* 图片样式 */
-        .second-image-container img, .third-image-container img {
+        .second-image-container img, .third-image-container img, .fourth-image-container img {
             width: 30%;
             height: auto;
             object-fit: cover;
             opacity: 0;
             transform: translateX(-100%);
             transition: all 1s ease-out;
-            border: 8px solid #fff;
-            border-radius: 15px;
-            margin-right: 30px;
+            border: 0.5rem solid #fff; /* 8px 转为 rem */
+            border-radius: 0.9375rem; /* 15px 转为 rem */
+            margin-right: 1.875rem; /* 30px 转为 rem */
         }
 
         /* 文字说明样式 */
-        .second-text, .third-text {
-            font-size: 1.5rem;
+        .second-text, .third-text, .fourth-text {
+            font-size: 1.5rem; /* 24px 转为 rem */
             color: white;
             max-width: 60%;
         }
@@ -101,38 +101,38 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 40px 0;
+            margin: 2.5rem 0; /* 40px 转为 rem */
         }
 
         .video-wrapper {
             flex: 1;
-            padding: 20px;
+            padding: 1.25rem; /* 20px 转为 rem */
         }
 
         .video-description {
             flex: 1;
             color: white;
-            padding: 20px;
-            font-size: 1.5rem;
+            padding: 1.25rem; /* 20px 转为 rem */
+            font-size: 1.5rem; /* 24px 转为 rem */
             text-align: left;
         }
 
         /* 在小屏幕下调整布局 */
-        @media (max-width: 768px) {
-            .second-image-container, .third-image-container {
+        @media (max-width: 48em) { /* 768px 转为 rem */
+            .second-image-container, .third-image-container, .fourth-image-container {
                 flex-direction: column; /* 在小屏幕下将它们从横向排列变为纵向排列 */
                 align-items: center; /* 居中对齐 */
                 justify-content: center;
                 height: auto; /* 高度根据内容自适应 */
             }
 
-            .second-image-container img, .third-image-container img {
+            .second-image-container img, .third-image-container img, .fourth-image-container img {
                 width: 80%; /* 小屏幕上图片宽度变大 */
                 margin-right: 0;
-                margin-bottom: 20px; /* 图片和文字之间添加间距 */
+                margin-bottom: 1.25rem; /* 20px 转为 rem */
             }
 
-            .second-text, .third-text {
+            .second-text, .third-text, .fourth-text {
                 margin-left: 0; /* 去掉左边的 margin */
                 max-width: 90%; /* 在小屏幕上文字宽度扩展 */
                 text-align: center; /* 文字居中 */
@@ -144,15 +144,15 @@
 
             .video-description {
                 text-align: center;
-                padding: 10px;
+                padding: 0.625rem; /* 10px 转为 rem */
             }
         }
 
         footer {
             background-color: #f8f9fa; /* 保持背景色为浅灰色 */
             text-align: center;
-            padding: 15px;
-            font-size: 1.2rem;
+            padding: 0.9375rem; /* 15px 转为 rem */
+            font-size: 1.2rem; /* 19px 转为 rem */
             color: black; /* 更改字体颜色为黑色 */
         }
 
@@ -195,13 +195,13 @@
             
             <!-- 插入影片區域 -->
             <div class="video-container d-flex align-items-center my-5">
-                <div class="video-wrapper" style="flex: 1; padding: 20px;">
-                    <video controls width="100%" style="border: 8px solid #fff; border-radius: 15px;">
+                <div class="video-wrapper" style="flex: 1; padding: 1.25rem;">
+                    <video controls width="100%" style="border: 0.5rem solid #fff; border-radius: 0.9375rem;">
                         <source src="img/IMG_2044.MOV" type="video/mp4">
                         您的瀏覽器不支援HTML5影片播放。
                     </video>
                 </div>
-                <div class="video-description" style="flex: 1; color: white; padding: 20px; font-size: 1.5rem; text-align: left;">
+                <div class="video-description" style="flex: 1; color: white; padding: 1.25rem; font-size: 1.5rem; text-align: left;">
                     <p>這部影片展示了如何利用機械手臂精準焊接，實現卓越品質與效率。</p>
                 </div>
             </div>
@@ -212,11 +212,19 @@
                     <p>針對外面不常見的工件，只要客人把物件帶來，我們廠內就會有技術人員協助開發焊接模具，滿足客戶需求，嚴格的品管，讓我們的產品不會有過多的誤差。</p>
                 </div>
             </div>
+
+            <!-- 第四個視覺區域 -->
+            <div class="fourth-image-container">
+                <img src="img/IMG_1067.jpg" alt="fourth-header" class="parallax-image" loading="lazy">
+                <div class="fourth-text">
+                    <p>針對特殊的填料需求我們的機械手臂都可以透過程式控制，例如這種焊道特殊的魚鱗焊我們一樣是有辦法達到。</p>
+                </div>
+            </div>
         </section>
     </div>
 
     <!-- Footer -->
-    <footer >
+    <footer class="bg-light text-center py-3 fs-3">
         光峻企業社@版權所有 - 2024
     </footer>
 
@@ -249,6 +257,8 @@
         // 为图片添加滚动动画
         createScrollAnimation(".second-image-container img", "-100%", ".second-image-container");
         createScrollAnimation(".third-image-container img", "-100%", ".third-image-container");
+        createScrollAnimation(".fourth-image-container img", "-100%", ".fourth-image-container");
     </script>
 </body>
 </html>
+
