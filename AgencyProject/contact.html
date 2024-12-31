@@ -5,48 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>光峻企業社</title>
     
+    <!-- 引入 Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入 Bootstrap Bundle JS (包含Popper.js) -->
     <script src="css/bootstrap.bundle.min.js"></script>
+    
+    <!-- 引入 jQuery 和 jqBootstrapValidation 插件，用於表單驗證 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqBootstrapValidation/1.3.7/jqBootstrapValidation.min.js"></script>
 
-    <!-- Leaflet CSS 和 JS -->
+    <!-- 引入 Leaflet 地圖的 CSS 和 JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
     <style>
-        /* 背景顏色漸變 */
+        /* 設定頁面背景漸層效果，從深藍色到金屬灰 */
         body {
             margin: 0;
-            background: linear-gradient(135deg, #1E3A8A, #A9A9A9); /* 深蓝到金属灰漸變 */
-            color: white;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1E3A8A, #A9A9A9); /* 深藍到金屬灰漸變 */
+            color: white; /* 字體顏色設為白色 */
+            font-family: Arial, sans-serif; /* 設定字型 */
         }
         .navbar p {
-            margin: 0;
+            margin: 0; /* 設定p標籤的外邊距為0 */
         }
+        /* 設定背景圖片容器 */
         .image-container {
             position: relative;
             width: 100%;
-            height: 60vh;
-            overflow: hidden;
+            height: 60vh; /* 設定容器高度為視窗高度的60% */
+            overflow: hidden; /* 超出範圍的內容隱藏 */
         }
         .image-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* 保證圖片覆蓋整個容器 */
             opacity: 0.8; /* 圖片稍微暗化 */
         }
+        /* 設定文字的樣式 */
         .text-overlay {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            text-align: center;
+            text-align: center; /* 文字置中 */
             color: #fff;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
             padding: 40px;
-            border-radius: 8px;
+            border-radius: 8px; /* 圓角邊框 */
             width: 80%;
             max-width: 600px;
         }
@@ -56,42 +62,37 @@
         }
         .nav-link {
             color: white;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease; /* 加入過渡效果 */
         }
         .nav-link:hover {
-            color: #FFD700; /* 滑鼠接觸轉黃色 */
+            color: #FFD700; /* 滑鼠移至時變成金色 */
         }
-        /* Contact form styles */
+        /* 設定聯絡表單的樣式 */
         #contact {
-            padding-top: 150px; /* 增加上方間距，讓表單下移 */
+            padding-top: 150px; /* 增加上方間距 */
         }
-
         .form-control {
-            font-size: 1.2rem; /* 增加文字大小，讓輸入框更容易操作 */
+            font-size: 1.2rem; /* 設定文字大小 */
             padding: 15px; /* 增加內邊距 */
-            margin-bottom: 20px; /* 增加項目間距 */
+            margin-bottom: 20px; /* 增加表單項目間的距離 */
         }
-
         textarea.form-control {
-            height: 200px; /* 增加文字區域的高度 */
+            height: 200px; /* 增加文字區域高度 */
         }
-
         button[type="submit"] {
-            font-size: 1.5rem; /* 增加按鈕文字大小 */
-            padding: 15px 40px; /* 增加按鈕的內邊距 */
-            margin-top: 20px; /* 按鈕上方增加空隙 */
+            font-size: 1.5rem; /* 設定按鈕文字大小 */
+            padding: 15px 40px; /* 增加按鈕內邊距 */
+            margin-top: 20px; /* 增加按鈕與其他區塊的間距 */
         }
-
         .btn-xl {
             background-color: #1E3A8A;
             color: white;
             border: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease; /* 按鈕背景顏色過渡效果 */
         }
-
         .btn-xl:hover {
-            background-color: #FFD700;
+            background-color: #FFD700; /* 滑鼠移至時背景顏色變為金色 */
             color: #1E3A8A;
         }
         
@@ -99,29 +100,29 @@
             background-color: #f8f9fa;
             text-align: center;
             padding: 15px;
-            font-size: 19px; /* 1.2rem -> 19px */
+            font-size: 19px;
             color: black; /* 設定字體顏色為黑色 */
         }
 
-        /* 設定地圖容器大小 */
+        /* 設定地圖容器的高度 */
         #map {
             height: 400px;
             width: 100%;
         }
 
-        /* 增加間距 */
+        /* 設定地圖與上方區塊的間距 */
         .map-section {
-            margin-top: 30px; /* 調整地圖與上方區塊的間距 */
-            margin-bottom: 40px; /* 調整地圖與footer之間的間距 */
+            margin-top: 30px; /* 增加地圖與上方區塊的間距 */
+            margin-bottom: 40px; /* 增加地圖與footer之間的間距 */
         }
 
         .location-text {
-            margin-bottom: 40px; /* 調整文字與按鈕之間的間距 */
+            margin-bottom: 40px; /* 增加文字與地圖之間的間距 */
         }
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
+    <!-- NAVBAR 區塊 -->
     <div class="container-fluid">
         <div class="navbar navbar-expand-md d-flex justify-content-between">
             <p class="fs-1">光峻企業社</p>
@@ -134,10 +135,10 @@
         </div>
     </div>
 
-    <!-- 主要視覺 -->
+    <!-- 主要視覺區塊 -->
     <header id="header">
         <div class="image-container">
-            <img src="img/2.jpg" alt="header">
+            <img src="img/2.jpg" alt="header"> <!-- 背景圖片 -->
             <div class="text-overlay">
                 <h2>創造良好品質</h2>
                 <h2>提供卓越服務</h2>
@@ -145,7 +146,7 @@
         </div>
     </header>
 
-    <!-- Contact Section -->
+    <!-- 聯絡我們區塊 -->
     <section id="contact">
         <div class="container">
             <div class="row">
@@ -191,24 +192,25 @@
             </div>
         </div>   
 
-        <!-- Leaflet 地圖 -->
+        <!-- Leaflet 地圖區塊 -->
         <div class="container map-section">
             <div class="row">
                 <div class="col-lg-12">
                     <h3 class="text-center location-text">我們的位置</h3>
-                    <div id="map"></div>
+                    <div id="map"></div> <!-- 地圖容器 -->
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 頁尾 -->
     <footer>
         光峻企業社@版權所有 - 2024
     </footer>
 
     <script>
         // 初始化 Leaflet 地圖
-        var map = L.map('map').setView([24.0238611, 120.5507778], 13);  // 使用提供的座標
+        var map = L.map('map').setView([24.0238611, 120.5507778], 13);  // 設定地圖的初始座標和縮放層級
 
         // 加載地圖圖層 (使用 OpenStreetMap)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -217,8 +219,9 @@
 
         // 在地圖上添加一個標記
         L.marker([24.0238611, 120.5507778]).addTo(map)
-            .bindPopup('光峻企業社位置')
-            .openPopup();
+            .bindPopup('光峻企業社位置')  // 顯示標記的訊息
+            .openPopup();  // 自動開啟訊息框
     </script>
 </body>
 </html>
+
