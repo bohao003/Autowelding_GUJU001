@@ -1,99 +1,98 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>關於我們</title>
+    <meta charset="UTF-8"> <!-- 設定頁面編碼為 UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 設定視窗寬度為裝置寬度，並設置縮放比例 -->
+    <title>關於我們</title> <!-- 頁面標題設為「關於我們」 -->
+    
+    <!-- 引入 Vue.js 以便在前端使用動態資料 -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    
+    <!-- 引入 Bootstrap CSS 樣式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 引入 Bootstrap JavaScript 套件 -->
     <script src="css/bootstrap.bundle.min.js"></script>
+    
     <style>
-        /* 背景顏色漸變 */
+        /* 背景設置：使用從深藍到金屬灰的漸變顏色 */
         body {
             margin: 0;
-            background: linear-gradient(135deg, #1E3A8A, #A9A9A9); /* 深蓝到金属灰漸變 */
-            color: white;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1E3A8A, #A9A9A9); /* 背景顏色漸變 */
+            color: white; /* 設定文字顏色為白色 */
+            font-family: Arial, sans-serif; /* 設定字體為 Arial */
         }
+
         .navbar p {
-            margin: 0;
+            margin: 0; /* 取消標題的外邊距 */
         }
+
+        /* 設定圖片區域的大小 */
         .image-container {
             position: relative;
             width: 100%;
-            height: 60vh;
-            overflow: hidden;
+            height: 60vh; /* 高度為視窗高度的60% */
+            overflow: hidden; /* 隱藏超出區域的內容 */
         }
+
+        /* 設定圖片的樣式，使其充滿容器並稍微暗化 */
         .image-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            opacity: 0.8; /* 圖片稍微暗化 */
+            object-fit: cover; /* 使圖片填滿容器 */
+            opacity: 0.8; /* 設定圖片透明度，稍微暗化 */
         }
+
+        /* 文字覆蓋層樣式，將文字放置於圖片上 */
         .text-overlay {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-              /* 創造良好品質提供卓越服務 */
+            transform: translate(-50%, -50%); /* 將文字置中 */
+            text-align: center; /* 文字置中 */
+            color: #fff; /* 文字顏色為白色 */
+            background: rgba(0, 0, 0, 0.5); /* 設定半透明黑色背景 */
+            padding: 40px; /* 內邊距 */
+            border-radius: 8px; /* 設定圓角 */
+            width: 80%; /* 設定寬度為80% */
+            max-width: 600px; /* 設定最大寬度 */
         }
+
+        /* 視覺區域的標題樣式 */
         .text-overlay h2 {
             font-size: 2.5rem;
-            margin: 0.5rem 0;
+            margin: 0.5rem 0; /* 設定上下邊距 */
         }
+
+        /* 滑鼠懸停時，連結顏色變為金色 */
         .nav-link {
             color: white;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease; /* 顏色過渡效果 */
         }
         .nav-link:hover {
-            color: #FFD700; /* 滑鼠接觸轉黃色 */
-        }
-        .text-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 40px;
-            border-radius: 8px;
-            width: 80%;
-            max-width: 600px;
+            color: #FFD700; /* 滑鼠懸停時顏色變為金色 */
         }
 
-        .text-overlay h1 {
-            font-size: 3rem;
-            margin: 0;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .text-overlay p{
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: #fff;
-        }
-
-        /* 内容 */
+        /* 內容區域樣式 */
         section {
             padding: 20px;
             margin: 20px auto;
             max-width: 800px;
         }
 
+        /* 內容區域標題樣式 */
         section h2 {
             font-size: 1.8rem;
             margin-bottom: 10px;
         }
 
+        /* 內容段落樣式 */
         section p {
             font-size: 1.1rem;
-            line-height: 1.6;
+            line-height: 1.6; /* 設定行高 */
         }
 
-        /* 卡片 */
+        /* 區塊樣式 */
         .team-members {
             display: flex;
             flex-wrap: wrap;
@@ -101,43 +100,47 @@
             align-items: center;
             overflow-x: auto;
             padding: 10px;
-            gap: 20px;
+            gap: 20px; /* 設定卡片間的間隔 */
         }
 
+        /* 卡片樣式 */
         .team-member {
             background-color: #fff;
             border-radius: 8px;
             padding: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 設定陰影 */
             text-align: center;
-            width: 250px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            width: 250px; /* 設定卡片寬度 */
+            transition: transform 0.3s, box-shadow 0.3s; /* 動畫效果 */
         }
 
         .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px); /* 滑鼠懸停時，卡片上移 */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* 增強陰影 */
         }
 
+        /* 照片樣式 */
         .team-member img {
             width: 200px;
             height: 200px;
             object-fit: cover;
-            border-radius: 10PX; /* 圖片外圍 */
+            border-radius: 10px; /* 設定圓角 */
             margin-bottom: 10px;
         }
 
+        /* 名稱樣式 */
         .team-member h3 {
             margin: 10px 0;
             font-size: 1.2rem;
         }
 
+        /* 描述樣式 */
         .team-member p {
             font-size: 1rem;
-            color: #555;
+            color: #555; /* 設定顏色 */
         }
 
-        /*  */
+        /* 優勢列表樣式 */
         .advantages-list {
             list-style-type: none;
             padding: 0;
@@ -147,11 +150,13 @@
         .advantages-list li {
             margin-bottom: 10px;
         }
+
+        /* 頁腳樣式 */
         footer {
-            background-color: #f8f9fa;
+            background-color: #f8f9fa; /* 設定頁腳背景顏色 */
             text-align: center;
             padding: 15px;
-            font-size: 19px; /* 1.2rem -> 19px */
+            font-size: 19px; /* 設定字體大小 */
             color: black; /* 設定字體顏色為黑色 */
         }
     </style>
@@ -159,10 +164,10 @@
 <body>
     
     <div id="app">
-        <!-- NAVBAR -->
+        <!-- navbar -->
         <nav>
             <div class="navbar navbar-expand-md d-flex justify-content-between">
-                <p class="fs-1">光峻企業社</p>
+                <p class="fs-1">光峻企業社</p> <!-- 網站名稱 -->
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
@@ -171,47 +176,52 @@
                 </ul>
             </div>
         </nav>
-        <!--內容 -->
+        
+        <!-- header -->
         <header id="header">
             <div class="image-container">
                 <img src="img/2.jpg" alt="header">
                 <div class="text-overlay">
-                    <h2>創造良好品質</h2>
-                    <h2>提供卓越服務</h2>
+                    <h2>創造良好品質</h2> <!-- 標題1 -->
+                    <h2>提供卓越服務</h2> <!-- 標題2 -->
                 </div>
             </div>
         </header>
 
-        <!-- 動態内容 -->
+        <!-- 理想區塊 -->
         <section>
             <h2>我们的理想</h2>
-            <p>{{ vision }}</p>
-            <p>{{ vision1}}</p>
+            <p>{{ vision }}</p> <!-- 顯示理想的內容 -->
+            <p>{{ vision1 }}</p> <!-- 顯示第二段理想的內容 -->
         </section>
 
+        <!-- 技術團隊區塊 -->
         <section>
             <h2>我们的技術</h2>
             <div class="team-members">
                 <div class="team-member" v-for="member in team" :key="member.id">
-                    <img :src="member.photo" :alt="member.name">
-                    <h3>{{ member.name }}</h3>
-                    <p>{{ member.role }}</p>
+                    <img :src="member.photo" :alt="member.name"> <!-- 顯示照片 -->
+                    <h3>{{ member.name }}</h3> <!-- 顯示名稱 -->
+                    <p>{{ member.role }}</p> <!-- 顯示敘述 -->
                 </div>
             </div>
         </section>
 
+        <!-- 優勢區塊 -->
         <section>
             <h2>我们的優勢</h2>
             <ul class="advantages-list">
-                <li v-for="advantage in advantages" :key="advantage">{{ advantage }}</li>
+                <li v-for="advantage in advantages" :key="advantage">{{ advantage }}</li> <!-- 顯示優勢項目 -->
             </ul>
         </section>
-        <footer >
+
+        <!-- 頁腳 -->
+        <footer>
             光峻企業社@版權所有 - 2024
         </footer>
     </div>
 
-    <!-- Vue.js -->
+    <!-- Vue.js 動態資料處理 -->
     <script>
         const { createApp } = Vue;
 
@@ -236,6 +246,7 @@
     </script>
 </body>
 </html>
+
 
 
 
