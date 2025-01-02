@@ -53,3 +53,6 @@ server.post("/contact", async (req, res) => {
 server.listen(8080, ()=>{
     console.log("Server is running at port 8080.");
 })
+server.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '/index.html'));
+  });
