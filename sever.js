@@ -18,7 +18,9 @@ var ProfolioDB = DB.create(__dirname+"/profolio.db");
 var ContactDB = DB.create(__dirname+"/contact.db");
  
 
-
+/*ProfolioDB.insert([
+    {title:"123"},
+]);*/
 
 server.get("/services", (req, res)=>{
     //DB find
@@ -42,7 +44,7 @@ server.get("/profolio", (req,res)=>{
 
 server.post("/contact", async (req, res) => {
     try {
-        await ContactDB.insert(req.body); // 將表單數據插入到數據庫
+        await ContactDB.insert(req.body); // 將表單數據插入到資料庫
         res.redirect("/");               // 提交後重定向到首頁或其他頁面
     } catch (err) {
         res.status(500).send({ error: "Failed to save contact information." });
