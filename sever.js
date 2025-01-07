@@ -22,7 +22,7 @@ var ContactDB = DB.create(__dirname+"/contact.db");
 { id: "1", role: "機械手臂焊接", photo: "img/IMG_1730.JPG" },
 { id: "2", role: "光纖雷射切管", photo: "img/IMG_4714.JPG" },
 { id: "3", role: "傳統鐵管加工", photo: "img/IMG_4490.jpg" },
-]);*/
+])*/
 
 server.get("/services", (req, res)=>{
     //DB find
