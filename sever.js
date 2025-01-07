@@ -46,10 +46,10 @@ server.get("/profolio", (req,res)=>{
 
 server.post("/contact", async (req, res) => {
     try {
-        await ContactDB.insert(req.body); // 將表單數據插入到資料庫
+        await ContactDB.insert(req.body); // 將表單數據插入到資料庫           /*req 是在讀取使用端的請求*/ /*res是伺服器提交給使用者的回應*/ /*body裡面是使用者輸入的資訊*/
         res.redirect("/");               // 提交後重定向到首頁或其他頁面
     } catch (err) {
-        res.status(500).send({ error: "Failed to save contact information." });
+        res.status(500).send({ error: "表單提交失敗請重新提交" });
     }
 });
 

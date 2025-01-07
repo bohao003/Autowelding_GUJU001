@@ -253,7 +253,7 @@
                 selector,
                 { x: xValue, opacity: 0 },
                 {
-                    x: "30%", /* 讓元素從左側平滑移動 */
+                    x: "50px", /* 讓元素從左側平滑移動 */
                     opacity: 1, /* 漸變為完全不透明 */
                     duration: 2, /* 動畫持續2秒 */
                     ease: "power3.out", /* 動畫效果 */
@@ -270,9 +270,9 @@
         }
 
         // 為各區域的圖片添加滾動動畫
-        createScrollAnimation(".second-image-container img", "-100%", ".second-image-container");
-        createScrollAnimation(".third-image-container img", "-100%", ".third-image-container");
-        createScrollAnimation(".fourth-image-container img", "-100%", ".fourth-image-container");
+        createScrollAnimation(".second-image-container img", "-150px", ".second-image-container");
+        createScrollAnimation(".third-image-container img", "-150px", ".third-image-container");
+        createScrollAnimation(".fourth-image-container img", "-150px", ".fourth-image-container");
     </script>
 </body>
 </html>
