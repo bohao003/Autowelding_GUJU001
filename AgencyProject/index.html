@@ -141,7 +141,7 @@
 </head>
 <body>
     <!-- 導覽列 -->
-    <div id="app">  <!-- 這是 Vue 掛載的目標 -->
+    <div id="app">
         <!-- 其他內容 -->
         <div class="container-fluid">
             <div class="navbar navbar-expand-md d-flex justify-content-between">
@@ -183,7 +183,6 @@
     <footer>
         光峻企業社@版權所有 - 2024
     </footer>
-
     <script>
         const app = Vue.createApp({
             data() {
@@ -204,9 +203,10 @@
             }
         });
 
-        // 註冊 Vue 實例，掛載在 #app
+        
         app.mount('#app');
     </script>
+
 </body>
 </html>
 
