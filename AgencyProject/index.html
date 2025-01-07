@@ -8,7 +8,8 @@
     <!-- 引入 Bootstrap 的 CSS 檔案 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="css/bootstrap.bundle.min.js"></script> <!-- 引入 Bootstrap 的 JS 套件 -->
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         /* 設定頁面背景為深藍色到金屬灰的漸變 */
         body {
@@ -168,7 +169,7 @@
         <h2>我們的服務</h2>
         <div class="service-cards">
             <div class="service-card">
-                <h3>焊接服務</h3>
+                <h3>{{ profolio.role }}</h3>
                 <p>提供高精度的焊接解決方案，適用於各類項目。</p>
                 <img src="img/IMG_2552.JPG" alt="焊接服務" class="service-image">
             </div>
