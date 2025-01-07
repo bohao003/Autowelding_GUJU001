@@ -19,9 +19,9 @@ var ContactDB = DB.create(__dirname+"/contact.db");
  
 
 /*ProfolioDB.insert([
-{ id: "1", role: "機械手臂焊接", photo: "img/IMG_1730.JPG" },
-{ id: "2", role: "光纖雷射切管", photo: "img/IMG_4714.JPG" },
-{ id: "3", role: "傳統鐵管加工", photo: "img/IMG_4490.jpg" },
+{ id: "1", role: "焊接服務", photo: "img/IMG_2552.JPG" ,text:"提供高精度的焊接解決方案，適用於各類項目。"},
+{ id: "2", role: "自動化技術", photo: "img/IMG_1721.JPG" ,text:"引入先進的機械手臂技術，提高生產效率。" },
+{ id: "3", role: "訂製設計", photo: "img/IMG_1721.JPG" ,text:"根據客戶需求量身訂製解決方案，滿足特殊要求。"},
 ])*/
 
 server.get("/services", (req, res)=>{
