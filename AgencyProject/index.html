@@ -141,55 +141,72 @@
 </head>
 <body>
     <!-- 導覽列 -->
-    <div class="container-fluid">
-        <div class="navbar navbar-expand-md d-flex justify-content-between">
-            <p class="fs-1">光峻企業社</p>
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
-                <li class="nav-item"><a class="nav-link" href="technology.html">生產技術</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 主要視覺區塊 -->
-    <header id="header">
-        <div class="image-container">
-            <img src="img/2.jpg" alt="header">
-            <div class="text-overlay">
-                <h2>創造良好品質</h2>
-                <h2>提供卓越服務</h2>
+    <div id="app">  <!-- 這是 Vue 掛載的目標 -->
+        <!-- 其他內容 -->
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-md d-flex justify-content-between">
+                <p class="fs-1">光峻企業社</p>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
+                    <li class="nav-item"><a class="nav-link" href="technology.html">生產技術</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
+                </ul>
             </div>
         </div>
-    </header>
 
-    <!-- 服務內容區塊 -->
-    <div class="services">
-        <h2>我們的服務</h2>
-        <div class="service-cards">
-            <div class="service-card">
-                <h3>{{ profolio.role }}</h3>
-                <p>提供高精度的焊接解決方案，適用於各類項目。</p>
-                <img src="img/IMG_2552.JPG" alt="焊接服務" class="service-image">
+        <!-- 主要視覺區塊 -->
+        <header id="header">
+            <div class="image-container">
+                <img src="img/2.jpg" alt="header">
+                <div class="text-overlay">
+                    <h2>創造良好品質</h2>
+                    <h2>提供卓越服務</h2>
+                </div>
             </div>
-            <div class="service-card">
-                <h3>自動化技術</h3>
-                <p>引入先進的機械手臂技術，提高生產效率。</p>
-                <img src="img/IMG_1721.JPG" alt="自動化技術" class="service-image">
+        </header>
+
+        <!-- 服務內容區塊 -->
+        <div class="services">
+            <h2>我們的服務</h2>
+            <div class="service-cards">
+                <div class="service-card" v-for="(service, index) in services" :key="index">
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                    <img :src="service.image" :alt="service.title" class="service-image">
+                </div>
             </div>
-            <div class="service-card">
-                <h3>訂製設計</h3>
-                <p>根據客戶需求量身訂製解決方案，滿足特殊要求。</p>
-                <img src="img/IMG_4459.jpg" alt="訂製設計" class="service-image">
-            </div>
-        </div>  
+        </div>
     </div>
 
     <!-- 頁腳 -->
     <footer>
         光峻企業社@版權所有 - 2024
     </footer>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    services: []  // 這裡儲存服務數據
+                };
+            },
+            mounted() {
+                // 使用 fetch API 發送 GET 請求
+                fetch('http://localhost:8080/services')
+                    .then(response => response.json())  // 解析 JSON 數據
+                    .then(data => {
+                        this.services = data;  // 將數據賦值給 services
+                    })
+                    .catch(error => {
+                        console.error('Error fetching services:', error);  // 錯誤處理
+                    });
+            }
+        });
+
+        // 註冊 Vue 實例，掛載在 #app
+        app.mount('#app');
+    </script>
 </body>
 </html>
 
