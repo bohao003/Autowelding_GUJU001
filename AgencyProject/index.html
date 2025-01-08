@@ -10,7 +10,7 @@
     <script src="css/bootstrap.bundle.min.js"></script> <!-- 引入 Bootstrap 的 JS 套件 -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <style>    
+    <style>
         /* 設定頁面背景為深藍色到金屬灰的漸變 */
         body {
             margin: 0;
@@ -130,30 +130,6 @@
             color: black; /* 設定字體顏色為黑色 */
         }
     </style>
-    <script>
-        const app = Vue.createApp({
-            data() {
-                return {
-                    services: []  // 這裡儲存服務數據
-                };
-            },
-            mounted() {
-                // 使用 fetch API 發送 GET 請求
-                fetch('http://localhost:8080/services')
-                    .then(response => response.json())  // 解析 JSON 數據
-                    .then(data => {
-                        this.services = data;  // 將數據賦值給 services
-                    })
-                    .catch(error => {
-                        console.error('Error fetching services:', error);  // 錯誤處理
-                    });
-            }
-        });
-
-        
-        app.mount('#app');
-    </script>
-
 </head>
 <body>
     <!-- 導覽列 -->
@@ -199,7 +175,29 @@
     <footer>
         光峻企業社@版權所有 - 2024
     </footer>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    services: []  // 這裡儲存服務數據
+                };
+            },
+            mounted() {
+                // 使用 fetch API 發送 GET 請求
+                fetch('http://localhost:8080/services')
+                    .then(response => response.json())  // 解析 JSON 數據
+                    .then(data => {
+                        this.services = data;  // 將數據賦值給 services
+                    })
+                    .catch(error => {
+                        console.error('Error fetching services:', error);  // 錯誤處理
+                    });
+            }
+        });
 
+        
+        app.mount('#app');
+    </script>
 
 </body>
 </html>
