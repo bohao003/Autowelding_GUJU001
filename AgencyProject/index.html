@@ -29,7 +29,15 @@
         }
 
         .nav-link:hover {
-            color: #FFD700; /* 當滑鼠懸停出容器範圍 */
+            color: #FFD700; /* 當滑鼠懸停時，連結顏色變為金色 */
+        }
+
+        /* 設定圖片容器的樣式 */
+        .image-container {
+            position: relative; /* 使圖片容器定位 */
+            width: 100%;
+            height: 60vh; /* 設定圖片高度為視窗高度的60% */
+            overflow: hidden; /* 防止圖片超出容器範圍 */
         }
 
         .image-container img {
