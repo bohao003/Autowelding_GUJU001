@@ -80,3 +80,12 @@ server.listen(8080, ()=>{
 server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
   });
+
+  const cors = require('cors');
+const express = require('express');
+const app = express();
+
+// 允许特定的域名跨域
+app.use(cors({
+  origin: 'https://autowelding-guju001.onrender.com'
+}));
