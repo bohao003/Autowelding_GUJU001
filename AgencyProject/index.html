@@ -187,28 +187,24 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    services: []  // 這裡儲存服務數據
+                    services: []  // 这里存储服务数据
                 };
             },
             mounted() {
-         fetch('http://localhost:8080/services')
-        .then(response => response.json())
-        .then(data => {
-            console.log('Fetched services:', data); // 打印数据
-            this.services = data;
-        })
-        .catch(error => {
-            console.error('Error fetching services:', error);
+                fetch('http://localhost:8080/services')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Fetched services:', data); // 打印数据
+                        this.services = data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching services:', error);
+                    });
+            }
         });
-}
-
-
-        
+    
         app.mount('#app');
     </script>
-
+    
 </body>
 </html>
-
-
-
