@@ -191,7 +191,7 @@
                 };
             },
             mounted() {
-                fetch('http://localhost:8080/services')
+                fetch('https://autowelding-guju001.onrender.com/services')
                     .then(response => response.json())
                     .then(data => {
                         console.log('Fetched services:', data); // 打印数据
