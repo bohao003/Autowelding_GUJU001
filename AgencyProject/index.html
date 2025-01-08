@@ -187,23 +187,23 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    services: []  // 这里存储服务数据
+                    services: []  // 資料庫的資料
                 };
             },
             mounted() {
-                fetch('https://autowelding-guju001.onrender.com/services')
-                    .then(response => response.json())
+                fetch('https://autowelding-guju001.onrender.com/services') /*像伺服器要求存取資料*/
+                    .then(response => response.json())/*伺服器傳回response，將response轉成json*/  /*data是response轉成jason的資料*/
                     .then(data => {
-                        console.log('Fetched services:', data); // 打印数据
-                        this.services = data;
+                        console.log('Fetched services:', data); // 印出資料庫資料   //Fetched services: 描述資料類型用於方便認出 沒有打也沒關係
+                        this.services = data;  //把data的值給services
                     })
-                    .catch(error => {
+                    .catch(error => {                                            //cath是在如果請求伺服器後，出現了網路問題、請求超時、或是伺服器錯誤傳回錯誤訊息
                         console.error('Error fetching services:', error);
                     });
             }
         });
     
-        app.mount('#app');
+        app.mount('#app'); //指定vue只能用在id是app的範圍內等於限定在這個頁面不會在別的頁面
     </script>
     
 </body>
