@@ -192,14 +192,17 @@
             },
             mounted() {
                 // 使用 fetch API 發送 GET 請求
-                fetch('http://localhost:8080/services')
-                    .then(response => response.json())  // 解析 JSON 數據
-                    .then(data => {
-                        this.services = data;  // 將數據賦值給 services
-                    })
-                    .catch(error => {
-                        console.error('Error fetching services:', error);  // 錯誤處理
-                    });
+                fetch('http://localhost:8080/services', {
+                method: 'GET',
+                mode: 'cors', // 或 'no-cors'
+                headers: {
+                            'Content-Type': 'application/json',
+                        },
+                })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
             }
         });
 
